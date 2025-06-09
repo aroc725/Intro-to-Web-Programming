@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Contact Us - Apple Computers</title>
+		<style>
+/* CSS Reset and Base Styles */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+	line-height: 1.6;
+	color: #333;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	min-height: 100vh;
+}
+
+/* Skip Navigation Link for Accessibility */
+.skip-nav {
+	position: absolute;
+	top: -40px;
+	left: 6px;
+	background: #000;
+	color: #fff;
+	padding: 8px;
+	text-decoration: none;
+	border-radius: 4px;
+	z-index: 1000;
+	transition: top 0.3s;
+}
+
+.skip-nav:focus {
+	top: 6px;
+}
+
+/* Background Images - Responsive */
+.bg-pattern-1 {
+	background-image:
+		radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 2px, transparent 2px),
+		radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 2px, transparent 2px);
+	background-size: 50px 50px;
+	background-position: 0 0, 25px 25px;
+}
+
+.bg-pattern-2 {
+	background-image:
+		linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+		linear-gradient(-45deg, rgba(255,255,255,0.05) 25%, transparent 25%);
+	background-size: 30px 30px;
+}
+
+/* Header Styles */
+header {
+	background: rgba(0,0,0,0.8);
+	backdrop-filter: blur(10px);
+	padding: 1rem 0;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+
+.header-content {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+h1 {
+	color: #fff;
+	text-align: center;
+	font-size: clamp(1.5rem, 4vw, 2.5rem);
+	margin: 1rem 0;
+	text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Navigation Styles */
+.nav-desktop {
+	display: none;
+}
+
+.nav-mobile {
+	position: relative;
+}
+
+.hamburger {
+	background: #007AFF;
+	border: none;
+	color: white;
+	font-size: 1.5rem;
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.hamburger:hover,
+.hamburger:focus {
+	background: #0056b3;
+	transform: scale(1.05);
+	outline: 2px solid #fff;
+	outline-offset: 2px;
+}
+
+.mobile-menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background: rgba(0,0,0,0.95);
+	backdrop-filter: blur(10px);
+	min-width: 250px;
+	border-radius: 8px;
+	overflow: hidden;
+	transform: translateY(-20px);
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.mobile-menu.active {
+	transform: translateY(0);
+	opacity: 1;
+	visibility: visible;
+}
+
+.mobile-menu a {
+	display: block;
+	color: #fff;
+	text-decoration: none;
+	padding: 1rem;
+	transition: background 0.3s ease;
+	border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.mobile-menu a:hover,
+.mobile-menu a:focus {
+	background: rgba(255,255,255,0.1);
+	outline: 2px solid #007AFF;
+	outline-offset: -2px;
+}
+
+/* Desktop Navigation */
+@media (min-width: 768px) {
+	.nav-mobile {
+		display: none;
+	}
+
+	.nav-desktop {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	.nav-desktop a {
+		color: #fff;
+		text-decoration: none;
+		padding: 0.5rem 1rem;
+		border-radius: 25px;
+		transition: all 0.3s ease;
+		background: rgba(255,255,255,0.1);
+	}
+
+	.nav-desktop a[aria-current="page"] {
+	    background: #007AFF;
+	    font-weight: 600;
+	}
+
+	.nav-desktop a:hover,
+	.nav-desktop a:focus {
+		background: #007AFF;
+		transform: translateY(-2px);
+		outline: 2px solid #fff;
+		outline-offset: 2px;
+	}
+}
+
+/* Main Content */
+main {
+	max-width: 800px;
+	margin: 2rem auto;
+	padding: 0 1rem;
+}
+
+/* Contact Form Styles */
+.contact-form {
+	background: rgba(255,255,255,0.95);
+	backdrop-filter: blur(10px);
+	border-radius: 15px;
+	padding: 2rem;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+	animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+h2 {
+	color: #2c3e50;
+	margin-bottom: 1.5rem;
+	font-size: clamp(1.2rem, 3vw, 1.8rem);
+	text-align: center;
+}
+
+.form-group {
+	margin-bottom: 1.5rem;
+}
+
+label {
+	display: block;
+	margin-bottom: 0.5rem;
+	color: #2c3e50;
+	font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+	width: 100%;
+	padding: 0.8rem;
+	border: 2px solid #ddd;
+	border-radius: 8px;
+	font-size: 1rem;
+	font-family: inherit;
+	transition: all 0.3s ease;
+	background: #fff;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+	outline: none;
+	border-color: #007AFF;
+	box-shadow: 0 0 0 3px rgba(0,122,255,0.1);
+	transform: translateY(-2px);
+}
+
+/* Fieldset Styles */
+fieldset {
+	border: 2px solid #ddd;
+	border-radius: 8px;
+	padding: 1rem;
+	margin-bottom: 1.5rem;
+	background: rgba(248,249,250,0.5);
+}
+
+legend {
+	color: #2c3e50;
+	font-weight: 600;
+	padding: 0 0.5rem;
+}
+
+.radio-group {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+	margin-top: 0.5rem;
+}
+
+.radio-option {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+input[type="radio"] {
+	width: 18px;
+	height: 18px;
+	accent-color: #007AFF;
+}
+
+.radio-option label {
+	margin-bottom: 0;
+	cursor: pointer;
+	font-weight: normal;
+}
+
+/* Select Styling */
+select {
+	cursor: pointer;
+	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+	background-position: right 0.5rem center;
+	background-repeat: no-repeat;
+	background-size: 1.5em 1.5em;
+	padding-right: 2.5rem;
+	appearance: none;
+}
+
+/* Submit Button */
+.submit-btn {
+	background: linear-gradient(135deg, #007AFF, #0056b3);
+	color: white;
+	border: none;
+	padding: 1rem 2rem;
+	border-radius: 50px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	display: block;
+	margin: 2rem auto 0;
+	box-shadow: 0 5px 15px rgba(0,122,255,0.3);
+}
+
+.submit-btn:hover,
+.submit-btn:focus {
+	transform: translateY(-3px);
+	box-shadow: 0 8px 25px rgba(0,122,255,0.4);
+	outline: 2px solid #fff;
+	outline-offset: 2px;
+}
+
+.submit-btn:active {
+	transform: translateY(-1px);
+}
+
+/* Footer */
+footer {
+	background: rgba(0,0,0,0.9);
+	color: #fff;
+	padding: 2rem 0;
+	margin-top: 3rem;
+	text-align: center;
+}
+
+footer nav {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+footer nav a {
+	color: #fff;
+	text-decoration: none;
+	padding: 0.5rem;
+	transition: color 0.3s ease;
+}
+
+footer nav a:hover,
+footer nav a:focus {
+	color: #007AFF;
+	outline: 2px solid #007AFF;
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+/* Focus Management */
+*:focus {
+	outline: 2px solid #007AFF;
+	outline-offset: 2px;
+}
+
+/* Return to Top Button */
+.return-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #007AFF;
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1rem;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.return-to-top:hover,
+.return-to-top:focus {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+	.radio-group {
+		gap: 1rem;
+	}
+
+	.contact-form {
+		padding: 1.5rem;
+	}
+}
+		</style>
+	</head>
+	<body class="bg-pattern-1">
+		<!-- Skip Navigation Link -->
+		<a href="#main-content" class="skip-nav">Skip to main content</a>
+
+		<header role="banner">
+			<div class="header-content">
+				<nav class="nav-mobile" role="navigation" aria-label="Mobile navigation">
+					<button class="hamburger" onclick="toggleMobileMenu()" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle navigation menu">☰</button>
+					<div class="mobile-menu" id="mobileMenu" role="menu">
+						<a href="index.html" role="menuitem">Home</a>
+						<a href="https://www.apple.com" role="menuitem" rel="external">Apple</a>
+						<a href="https://www.apple.com/imac" role="menuitem" rel="external">iMac</a>
+						<a href="https://www.apple.com/macbook-pro" role="menuitem" rel="external">Macbook Pro</a>
+						<a href="apple_founders.html" role="menuitem">The Founders</a>
+						<a href="contact.html" role="menuitem" aria-current="page">Contact Us</a>
+					</div>
+				</nav>
+
+				<nav class="nav-desktop" role="navigation" aria-label="Main navigation">
+					<a href="index.html">Home</a>
+					<a href="https://www.apple.com" rel="external">Apple</a>
+					<a href="https://www.apple.com/imac" rel="external">iMac</a>
+					<a href="https://www.apple.com/macbook-pro" rel="external">Macbook Pro</a>
+					<a href="apple_founders.html">The Founders</a>
+					<a href="contact.html" aria-current="page">Contact Us</a>
+				</nav>
+				<h1>Contact Us</h1>
+			</div>
+		</header>
+
+		<main id="main-content" class="bg-pattern-2">
+			<div class="contact-form">
+				<h2 id="top" tabindex="-1">Get in Touch</h2>
+				<form id="contactForm" onsubmit="handleSubmit(event)">
+					<!-- Text Input Fields -->
+					<div class="form-group">
+						<label for="fullName">Full Name *</label>
+						<input type="text" id="fullName" name="fullName" required
+							   aria-describedby="nameHelp">
+						<small id="nameHelp">Please enter your first and last name</small>
+					</div>
+
+					<div class="form-group">
+						<label for="email">Email Address *</label>
+						<input type="email" id="email" name="email" required
+							   aria-describedby="emailHelp">
+						<small id="emailHelp">We'll use this to respond to your inquiry</small>
+					</div>
+
+					<div class="form-group">
+						<label for="phone">Phone Number</label>
+						<input type="tel" id="phone" name="phone"
+							   aria-describedby="phoneHelp">
+						<small id="phoneHelp">Optional: Include for phone support</small>
+					</div>
+
+					<!-- Radio Button Fieldset -->
+					<fieldset>
+						<legend>How did you hear about us? *</legend>
+						<div class="radio-group" role="radiogroup" aria-required="true">
+							<div class="radio-option">
+								<input type="radio" id="search" name="hearAbout" value="search" required>
+								<label for="search">Search Engine (Google, Bing, etc.)</label>
+							</div>
+							<div class="radio-option">
+								<input type="radio" id="social" name="hearAbout" value="social" required>
+								<label for="social">Social Media</label>
+							</div>
+							<div class="radio-option">
+								<input type="radio" id="friend" name="hearAbout" value="friend" required>
+								<label for="friend">Friend or Family Recommendation</label>
+							</div>
+							<div class="radio-option">
+								<input type="radio" id="other" name="hearAbout" value="other" required>
+								<label for="other">Other</label>
+							</div>
+						</div>
+					</fieldset>
+
+					<!-- Select Field -->
+					<div class="form-group">
+						<label for="inquiryType">Type of Inquiry *</label>
+						<select id="inquiryType" name="inquiryType" required
+								aria-describedby="inquiryHelp">
+							<option value="">Please select an option</option>
+							<option value="general">General Information</option>
+							<option value="technical">Technical Support</option>
+							<option value="sales">Sales Inquiry</option>
+							<option value="partnership">Partnership Opportunity</option>
+							<option value="media">Media/Press Inquiry</option>
+							<option value="feedback">Website Feedback</option>
+						</select>
+						<small id="inquiryHelp">Choose the category that best describes your question</small>
+					</div>
+
+					<!-- Message Field -->
+					<div class="form-group">
+						<label for="message">Your Message *</label>
+						<textarea id="message" name="message" rows="5" required
+								  aria-describedby="messageHelp"
+								  placeholder="Please provide details about your inquiry..."></textarea>
+						<small id="messageHelp">Tell us more about how we can help you</small>
+					</div>
+
+					<!-- Submit Button -->
+					<button type="submit" class="submit-btn">
+						Send Message
+					</button>
+				</form>
+			</div>
+		</main>
+
+		<!-- Return to top link -->
+		<a href="#top" class="return-to-top" id="returnToTop">Return to Top</a>
+
+		<footer role="contentinfo">
+			<nav role="navigation" aria-label="Footer navigation">
+				<a href="index.html">Home</a>
+				<a href="https://www.apple.com" rel="external">Apple</a>
+				<a href="https://www.apple.com/imac" rel="external">iMac</a>
+				<a href="https://www.apple.com/macbook-pro" rel="external">Macbook Pro</a>
+				<a href="apple_founders.html">The Founders</a>
+				<a href="contact.html">Contact Us</a>
+			</nav>
+			<p>Copyright &copy; 2025. All rights reserved.</p>
+		</footer>
+
+		<script>
+			function toggleMobileMenu() {
+				const mobileMenu = document.getElementById('mobileMenu');
+				const hamburger = document.querySelector('.hamburger');
+				const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+
+				mobileMenu.classList.toggle('active');
+				hamburger.setAttribute('aria-expanded', !isExpanded);
+
+				// Focus management
+				if (!isExpanded) {
+					const firstLink = mobileMenu.querySelector('a');
+					if (firstLink) firstLink.focus();
+				}
+			}
+
+			// Keyboard navigation for mobile menu
+			document.addEventListener('keydown', function(e) {
+				const mobileMenu = document.getElementById('mobileMenu');
+				if (mobileMenu.classList.contains('active')) {
+					if (e.key === 'Escape') {
+						mobileMenu.classList.remove('active');
+						document.querySelector('.hamburger').setAttribute('aria-expanded', 'false');
+						document.querySelector('.hamburger').focus();
+					}
+				}
+			});
+
+			// Close mobile menu when clicking outside
+			document.addEventListener('click', function(e) {
+				const mobileMenu = document.getElementById('mobileMenu');
+				const hamburger = document.querySelector('.hamburger');
+
+				if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+					mobileMenu.classList.remove('active');
+					hamburger.setAttribute('aria-expanded', 'false');
+				}
+			});
+
+			// Smooth scrolling for anchor links
+			document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+				anchor.addEventListener('click', function (e) {
+					e.preventDefault();
+					const target = document.querySelector(this.getAttribute('href'));
+					if (target) {
+						target.scrollIntoView({
+							behavior: 'smooth',
+							block: 'start'
+						});
+						// Focus the target for screen readers
+						target.focus();
+					}
+				});
+			});
+
+			// Form submission handler
+			function handleSubmit(event) {
+				event.preventDefault();
+
+				// Get form data
+				const formData = new FormData(event.target);
+				const name = formData.get('fullName');
+				const email = formData.get('email');
+				const phone = formData.get('phone');
+				const hearAbout = formData.get('hearAbout');
+				const inquiryType = formData.get('inquiryType');
+				const message = formData.get('message');
+
+				// Create alert message
+				let alertMessage = `Thank you for contacting us, ${name}!\n\n`;
+				alertMessage += `We have received your ${inquiryType} inquiry `;
+				alertMessage += `and will respond to ${email}`;
+				if (phone) {
+					alertMessage += ` or ${phone}`;
+				}
+				alertMessage += ` as soon as possible.\n\n`;
+				alertMessage += `We appreciate that you heard about us through: ${hearAbout}`;
+
+				// Show alert
+				alert(alertMessage);
+
+				// Optional: Reset form after submission
+				event.target.reset();
+			}
+		</script>
+	</body>
+</html>
